@@ -79,11 +79,11 @@ int main() {
   int N, x, y, caseNumber = 0;
   string s;
   
-  while (cin >> N, N) {
+  while (scanf("%d", &N), N) {
     vector<coordinate> coordinates;
 
     for (int i = 0; i < 2 * N; ++i) {
-      cin >> s >> x >> y;
+      scanf("%*s %d %d", &x, &y) ;
 
       coordinates.push_back({x, y});
     }
