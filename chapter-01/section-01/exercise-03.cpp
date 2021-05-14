@@ -4,18 +4,8 @@
 
 using namespace std;
 
-struct coordinate {
-  int x;
-  int y;
-
-  coordinate(int x, int y) {
-    this->x = x;
-    this->y = y;
-  }
-};
-
-double getDistance(coordinate &a, coordinate &b) {
-  return sqrt(pow(b.x - a.x, 2) + pow(b.y - a.y, 2));
+double getDistance(pair<int, int> &a, pair<int, int> &b) {
+  return sqrt(pow(b.first - a.first, 2) + pow(b.second - a.second, 2));
 }
 
 int getNextIndex(vector<bool> &memoize) {
@@ -28,7 +18,8 @@ int getNextIndex(vector<bool> &memoize) {
   return -1;
 }
 
-double getMinCost(vector<coordinate> &coordinates,
+double getMinCost(
+    vector<pair<int, int>> &coordinates,
     vector<bool> &memoize, 
     const int index,
     double minCost,
@@ -80,7 +71,7 @@ int main() {
   string s;
   
   while (scanf("%d", &N), N) {
-    vector<coordinate> coordinates;
+    vector<pair<int, int>> coordinates;
 
     for (int i = 0; i < 2 * N; ++i) {
       scanf("%*s %d %d", &x, &y) ;
