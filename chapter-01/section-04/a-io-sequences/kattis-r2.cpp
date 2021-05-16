@@ -6,11 +6,10 @@ int main() {
   ios::sync_with_stdio(false);
   cin.tie();
   
-  int v, t;
+  int R1, S;
 
-  while (scanf("%d %d", &v, &t) != EOF) {
-    
-    printf("%d\n", 2 * t * v);
-  }
+  scanf("%d %d", &R1, &S);
+
+  printf("%d", S * 2 - R1);
 }
 

@@ -6,11 +6,9 @@ int main() {
   ios::sync_with_stdio(false);
   cin.tie();
   
-  int v, t;
+  string S;
 
-  while (scanf("%d %d", &v, &t) != EOF) {
-    
-    printf("%d\n", 2 * t * v);
-  }
+  getline(cin, S);
+
+  cout << "Thank you, " << S << ", and farewell!";
 }
-
