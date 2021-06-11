@@ -7,17 +7,17 @@ int main() {
   cin.tie();
   
   int t;
-  char universe[10005];
+  string universe;
 
-  scanf("%d", &t);
+  cin >> t;
 
   while (t--) {
     int ans = 0;
     stack<int> starts;
     
-    scanf("%s", universe);
+    cin >> universe;
 
-    for (int i = 0; universe[i]; ++i) {
+    for (int i = 0; i < (int) universe.size(); ++i) {
       if (universe[i] == '\\') {
         starts.push(i);
       } else if (universe[i] == '/' && !starts.empty()) {
