@@ -2,109 +2,71 @@
 
 using namespace std;
 
-void compare(vector<int> arr) {
-  if (arr[0] > arr[1]) {
-    printf("Bigger\n");    
-  } else if (arr[0] == arr[1]) {
-    printf("Equal\n");
-  } else {
-    printf("Smaller\n");
-  }
-}
-
-void median(vector<int> arr) {
-  vector<int> median = {arr[0], arr[1], arr[2]};
-  sort(median.begin(), median.end());
-
-  printf("%d\n", median[1]);
-}
-
-void jumps(vector<int> arr) {
-  unordered_set<int> visited;
-  
-  int index = 0;
-
-  visited.insert(index);
-
-  while (true) {
-    int nextIndex = arr[index];
-
-    if (nextIndex < 0 || nextIndex >= (int) arr.size()) {
-      printf("Out\n");
-      break;
-    }
-
-    if (nextIndex == (int) arr.size() - 1) {
-      printf("Done\n");
-      break;
-    }
-
-    if (visited.find(nextIndex) != visited.end()) {
-      printf("Cyclic\n");
-      break;
-    }
-
-    visited.insert(nextIndex);
-    index = nextIndex;
-  }
-}
-
-void sum(vector<int> arr, bool onlyEven) {
-  int sum = 0;
-  for (auto value : arr) {
-    if (!onlyEven || value % 2 == 0) {
-      sum += value;
-    }
-  }
-
-  printf("%d\n", sum);
-}
-
-void letters(vector<int> arr) {
-  string s;
-
-  for (auto value : arr) {
-    char letter = (char) (value % 26) + 'a';
-
-    s.push_back(letter);
-  }
-
-  cout << s;
-}
-
 int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  
+  long long sum = 0;
   int n, t;
 
-  scanf("%d %d", &n, &t);
-
-  vector<int> arr(n);
+  cin >> n >> t;
+  
+  int arr[n];
 
   for (int i = 0; i < n; ++i) {
-    scanf("%d", &arr[i]);
+    cin >> arr[i];
   }
 
-  switch(t) {
+  switch (t) {
     case 1:
-      printf("7\n");
+      cout << 7;
       break;
     case 2:
-      compare(arr);
+      if (arr[0] > arr[1]) cout << "Bigger";
+      else if (arr[0] == arr[1]) cout << "Equal";
+      else cout << "Smaller";
       break;
     case 3:
-      median(arr);
+      sort(arr, arr + 3);
+      cout << arr[1];
       break;
     case 4:
-      sum(arr, false);
+      for (int i = 0; i < n; ++i) sum += arr[i];
+      cout << sum;
       break;
     case 5:
-      sum(arr, true);
+      for (int i = 0; i < n; ++i) {
+        if (arr[i] % 2 == 0) sum += arr[i];
+      }
+      cout << sum;
       break;
     case 6:
-      letters(arr);
+      for (int i = 0; i < n; ++i) cout << char((arr[i] % 26) + 'a');
       break;
     case 7:
-      jumps(arr);
+      vector<bool> visited(n, 0);
+      int index = 0;
+
+      while (true) {
+        if (index < 0 || index >= n) {
+          cout << "Out";
+          return 0;
+        }
+
+        if (visited[index]) {
+          cout << "Cyclic";
+          return 0;
+        }
+        
+        if (index == n - 1) {
+          cout << "Done";
+          break;
+        }
+
+        visited[index] = true;
+
+        index = arr[index];
+      }
       break;
   }
 }
-
