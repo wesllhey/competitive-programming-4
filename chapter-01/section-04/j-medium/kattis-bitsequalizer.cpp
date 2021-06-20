@@ -29,7 +29,8 @@ int main() {
         ++oneToZero;
       }
     }
-
+    
+    cout << diff << ", oneDiff:" << oneDiff << ", oneToZero: " << oneToZero << ", zeroToOne:" << zeroToOne << "\n";
     if (oneDiff > 0) {
       ans = -1;
     } else {
