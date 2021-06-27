@@ -37,12 +37,16 @@ int main() {
           ++count;
         }
       }
-
-      if (count == 0 || count > 1) {
-        cout << "UNDETERMINED\n";
-      } else {
+      
+      if (count == 1) {
         cout << result << "\n";
+      } else {
+        cout << "UNDETERMINED\n";
       }
+    }
+
+    if (test) {
+      cout << "\n";
     }
   }
 }
