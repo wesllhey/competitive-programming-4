@@ -38,8 +38,6 @@ int main() {
     for (int i = 0; i < 51; ++i) {
       cin >> card;
       
-      cout << card << "\n";
-
       if (isDealerTurn) {
         dealer.push_back(card[1]);
       } else {
@@ -69,7 +67,6 @@ int main() {
         currentCard = nonDealer.back(); nonDealer.pop_back();
       }
 
-      printf("current card %c\n", currentCard);
 
       heap.push_back(currentCard);
       
@@ -80,16 +77,19 @@ int main() {
 
           for (int i = 0; i < value; ++i) {
             if (nonDealer.empty()) {
-              winner = 1; deckSize = dealer.size();
+              winner = 1; 
+              deckSize = dealer.size();
               break;
             }
               
-            char cardPlayed = nonDealer.back(); nonDealer.pop_back();
+            char cardPlayed = nonDealer.back(); 
+            nonDealer.pop_back();
               
             heap.push_back(cardPlayed);
 
             if (cardValue(cardPlayed)) {
-              currentCard = cardPlayed; isDealerTurn = !isDealerTurn;
+              currentCard = cardPlayed; 
+              isDealerTurn = !isDealerTurn;
               isFaceCard = true;
               break;
             }
@@ -97,8 +97,10 @@ int main() {
 
           if (winner) break;
 
-          if (isFaceCard) {
-            moveHeapToDeck(heap, dealer); isDealerTurn = false;
+          if (!isFaceCard) {
+            moveHeapToDeck(heap, dealer); 
+            isDealerTurn = false;
+            break;
           }
         } else {
           bool isFaceCard = false;
@@ -122,16 +124,16 @@ int main() {
 
           if (winner) break;
 
-          if (isFaceCard) {
-            moveHeapToDeck(heap, nonDealer); isDealerTurn = true;
+          if (!isFaceCard) {
+            moveHeapToDeck(heap, nonDealer); 
+            isDealerTurn = true;
+            break;
           }
         }
       }
       
       isDealerTurn = !isDealerTurn;
     }
-
-    printf("delaer %ld, non-dealer %ld, heap %ld\n", dealer.size(), nonDealer.size(), heap.size());
 
     printf("%d%3d\n", winner, deckSize);
   }
