@@ -6,16 +6,15 @@ int main() {
   ios::sync_with_stdio(false);
   cin.tie();
   
-  int nProblems, nTeams, nSubmissions;
-
+  int nProblems, nTeams, nSubmissions, time, team;
+  char question[25], status[25];
+  
   scanf("%d %d %d", &nProblems, &nTeams, &nSubmissions);
 
   vector<pair<int, int>> ans(nProblems, {-1, -1});
   vector<vector<bool>> subs(nTeams + 1, vector<bool>(nProblems, false)); 
-  while (nSubmissions--) {
-    int time, team;
-    char question[25], status[25];
-    
+  
+  while (nSubmissions--) {  
     scanf("%d %d %s %s", &time, &team, question, status);
 
     const int questionIndex = question[0] - 'A';
